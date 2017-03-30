@@ -230,4 +230,4 @@
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 (key-chord-mode 1)
 
-(define-key evil-insert-state-map (kbd "C-j") 'evil-normal-state)
+;(define-key evil-insert-state-map (kbd "C-j") 'evil-normal-state)
