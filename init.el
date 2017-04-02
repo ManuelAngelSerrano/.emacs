@@ -275,4 +275,5 @@
   "t"  'ido-find-file
   "e"  'ido-find-file
   "w"  'save-buffer
+  "q"  'evil-quit
   )
