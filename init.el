@@ -1,6 +1,6 @@
  ;; MELPA
 (require 'package)
-;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 (package-initialize)
@@ -71,12 +71,12 @@
 (define-key isearch-mode-map (kbd "<right>") 'isearch-repeat-forward) ; -> Search Forward
 (define-key isearch-mode-map (kbd "<left>") 'isearch-repeat-backward) ; <- Search Backward
 
-(global-set-key (kbd "M-<left>") 'backward-word)
-(global-set-key (kbd "M-<right>") 'forward-word)
-(global-set-key (kbd "M-<up>") 'backward-paragraph)
-(global-set-key (kbd "M-<down>") 'forward-paragraph)
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
+;; (global-set-key (kbd "M-<left>") 'backward-word)
+;; (global-set-key (kbd "M-<right>") 'forward-word)
+;; (global-set-key (kbd "M-<up>") 'backward-paragraph)
+;; (global-set-key (kbd "M-<down>") 'forward-paragraph)
+;; (global-set-key (kbd "M-p") 'backward-paragraph)
+;; (global-set-key (kbd "M-n") 'forward-paragraph)
 
 (global-set-key (kbd "M-x") 'smex)
 
@@ -90,18 +90,18 @@
 ;(define-key markdown-mode-map (kbd "C-b") 'pandoc-convert-to-pdf)
 
 ;;Reescribimos las teclas del markdown-mode
-(defun mp-add-markdown-keys ()
-  (local-set-key (kbd "M-<left>") 'backward-word)
-  (local-set-key (kbd "M-<right>") 'forward-word)
-  (local-set-key (kbd "M-b") 'backward-word)
-  (local-set-key (kbd "M-f") 'forward-word)
-  (local-set-key (kbd "M-p") 'backward-paragraph)
-  (local-set-key (kbd "M-n") 'forward-paragraph)
-  (local-set-key (kbd "M-<up>") 'backward-paragraph)
-  (local-set-key (kbd "M-<down>") 'forward-paragraph)
-)
+;; (defun mp-add-markdown-keys ()
+;;   (local-set-key (kbd "M-<left>") 'backward-word)
+;;   (local-set-key (kbd "M-<right>") 'forward-word)
+;;   (local-set-key (kbd "M-b") 'backward-word)
+;;   (local-set-key (kbd "M-f") 'forward-word)
+;;   (local-set-key (kbd "M-p") 'backward-paragraph)
+;;   (local-set-key (kbd "M-n") 'forward-paragraph)
+;;   (local-set-key (kbd "M-<up>") 'backward-paragraph)
+;;   (local-set-key (kbd "M-<down>") 'forward-paragraph)
+;; )
 
-(add-hook 'markdown-mode-hook 'mp-add-markdown-keys)
+;; (add-hook 'markdown-mode-hook 'mp-add-markdown-keys)
 ;;Fin Keybind markdown-mode
 
 ;; redo+
@@ -171,7 +171,7 @@
 (load "auctex.el" nil t t)
 (setq TeX-PDF-mode t)
 
-;; coffeescript
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -184,12 +184,13 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
+    (pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
  '(recentf-mode t)
  '(shift-select-mode nil)
  '(show-paren-mode t))
 
 
+;; coffeescript
 (eval-after-load "coffee-mode"
   '(progn
      (define-key coffee-mode-map [(meta r)] 'coffee-compile-buffer)
@@ -219,6 +220,10 @@
 
 (linum-mode 1)
 
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+
 (require 'evil)
 (evil-mode 1)
 
@@ -228,6 +233,46 @@
 (require 'key-chord)
 (setq key-chord-two-keys-delay 0.15)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-define evil-insert-state-map "ZZ" 'evil-save-and-close)
 (key-chord-mode 1)
 
+;;; evil <esc> quits
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+
 ;(define-key evil-insert-state-map (kbd "C-j") 'evil-normal-state)
+
+;;neotree
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+
+(require 'powerline)
+(require 'powerline-evil)
+(powerline-evil-vim-color-theme)
+
+;; evil-nerd-commenter
+(evilnc-default-hotkeys)
+
+;; avy = easymotion
+(require 'avy)
+(evil-leader/set-key
+  ",f" 'avy-goto-char
+  ",F" 'avy-goto-char
+  ",t" 'avy-goto-char
+  ",T" 'avy-goto-char
+  ",w" 'avy-goto-word-0-below
+  ",b" 'avy-goto-word-0-above
+  ",j" 'avy-goto-line-below
+  ",k" 'avy-goto-line-above
+  "f"  'ido-find-file
+  "t"  'ido-find-file
+  "e"  'ido-find-file
+  "w"  'save-buffer
+  )
