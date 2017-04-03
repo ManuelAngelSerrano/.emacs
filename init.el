@@ -26,6 +26,7 @@
 ;; Tema
 ;;;;;;;;;;;;;;;
 (load-theme 'tango-dark)
+(load-theme 'monokai t) ;;t for avoid confirmation
 
 ;; Word Wrap
 (global-visual-line-mode 1)
@@ -179,12 +180,15 @@
  ;; If there is more than one, they won't work right.
  '(cua-enable-cua-keys nil)
  '(cua-mode t nil (cua-base))
+ '(custom-safe-themes
+   (quote
+    ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(delete-selection-mode t)
  '(org-CUA-compatible nil)
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
+    (evil-matchit monokai-theme pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
  '(recentf-mode t)
  '(shift-select-mode nil)
  '(show-paren-mode t))
@@ -260,8 +264,14 @@
 ;; evil-nerd-commenter
 (evilnc-default-hotkeys)
 
+;;extend % use to tags
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
 ;; avy = easymotion
 (require 'avy)
+
+;; set custom evil-leader keybinds
 (evil-leader/set-key
   ",f" 'avy-goto-char
   ",F" 'avy-goto-char
@@ -271,9 +281,13 @@
   ",b" 'avy-goto-word-0-above
   ",j" 'avy-goto-line-below
   ",k" 'avy-goto-line-above
+  "rr" 'eval-buffer
   "f"  'ido-find-file
   "t"  'ido-find-file
   "e"  'ido-find-file
   "w"  'save-buffer
   "q"  'evil-quit
+  "."  'evil-ex
+  "s"  'evil-search-forward
+  "S"  'evil-search-backward
   )
