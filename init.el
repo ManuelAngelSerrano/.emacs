@@ -281,6 +281,8 @@
   ",b" 'avy-goto-word-0-above
   ",j" 'avy-goto-line-below
   ",k" 'avy-goto-line-above
+  "s"  'evil-search-forward
+  "S"  'evil-search-backward
   "rr" 'eval-buffer
   "f"  'ido-find-file
   "t"  'ido-find-file
@@ -291,6 +293,4 @@
   "q"  'kill-buffer
   ;; "qq"  'evil-quit
   "."  'evil-ex
-  "s"  'evil-search-forward
-  "S"  'evil-search-backward
   )
