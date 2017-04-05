@@ -292,5 +292,6 @@
   "w"  'save-buffer
   "q"  'kill-buffer
   ;; "qq"  'evil-quit
+  "max" 'toggle-frame-maximized
   "."  'evil-ex
   )
