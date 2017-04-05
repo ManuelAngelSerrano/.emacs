@@ -291,7 +291,9 @@
   "b"  'switch-to-buffer
   "w"  'save-buffer
   "q"  'kill-buffer
-  ;; "qq"  'evil-quit
+  ",q" 'kill-emacs ;q!
+  "zz" 'save-buffers-kill-emacs
   "max" 'toggle-frame-maximized
   "."  'evil-ex
   )
+
