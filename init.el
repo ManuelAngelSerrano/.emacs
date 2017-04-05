@@ -285,8 +285,11 @@
   "f"  'ido-find-file
   "t"  'ido-find-file
   "e"  'ido-find-file
+  "p"  'ido-find-file
+  "b"  'switch-to-buffer
   "w"  'save-buffer
-  "q"  'evil-quit
+  "q"  'kill-buffer
+  ;; "qq"  'evil-quit
   "."  'evil-ex
   "s"  'evil-search-forward
   "S"  'evil-search-backward
