@@ -125,6 +125,10 @@
         ))
 (yas-global-mode 1)
 
+(require 'emmet-mode) ;; C-j expand emmet snippets
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+(setq emmet-move-cursor-between-quotes t) ;; default nil
 
 
 ;; smartparens
@@ -188,7 +192,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (evil-matchit monokai-theme pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
+    (emmet-mode yasnippet-bundle evil-matchit monokai-theme pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
  '(recentf-mode t)
  '(shift-select-mode nil)
  '(show-paren-mode t))
