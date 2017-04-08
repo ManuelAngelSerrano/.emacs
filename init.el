@@ -178,7 +178,7 @@
 (require 'key-chord)
 (setq key-chord-two-keys-delay 0.15)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-(key-chord-define evil-insert-state-map "ZZ" 'evil-save-and-close)
+(key-chord-define evil-normal-state-map "ZZ" 'evil-save-and-close)
 (key-chord-mode 1)
 
 ;;; evil <esc> quits
@@ -233,6 +233,7 @@
   ",q" 'kill-emacs ;q!
   "zz" 'save-buffers-kill-emacs
   "max" 'toggle-frame-maximized
+  "x" 'smex
   "."  'evil-ex
   )
 
