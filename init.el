@@ -233,6 +233,7 @@
   ",q" 'kill-emacs ;q!
   "zz" 'save-buffers-kill-emacs
   "max" 'toggle-frame-maximized
+  "min" 'toggle-frame-maximized
   "x" 'smex
   "."  'evil-ex
   )
