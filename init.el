@@ -240,6 +240,9 @@
   "zz" 'save-buffers-kill-emacs
   "max" 'toggle-frame-maximized
   "min" 'toggle-frame-maximized
+  "mf" 'toggle-frame-fullscreen
+  "v" 'visual-line-mode ;;'toggle-word-wrap
+  "n" 'linum-mode
   "x" 'smex
   "."  'evil-ex
   )
