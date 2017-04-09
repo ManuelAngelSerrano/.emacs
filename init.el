@@ -75,6 +75,12 @@
 
 (define-key text-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 
+;; Set super-h and Alt-h to hide window
+;; (global-set-key [(meta h)] 'ns-do-hide-emacs)
+;; (global-set-key [(super h)] 'ns-do-hide-emacs)
+(global-set-key (kbd "S-h") 'ns-do-hide-emacs)
+(global-set-key (kbd "M-h") 'ns-do-hide-emacs)
+
 ;; redo+
 (require 'redo+)
 
