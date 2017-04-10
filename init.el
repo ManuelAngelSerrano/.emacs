@@ -111,6 +111,8 @@
 (package-initialize)
 (smartparens-global-mode t)
 (require 'smartparens-config)
+;; evil-smartparens will be enabled whenever smartparens is enabled
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
 ;; haml-mode
 (require 'haml-mode)
@@ -136,11 +138,12 @@
    (quote
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(delete-selection-mode t)
+ '(evil-space-mode t)
  '(org-CUA-compatible nil)
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (emmet-mode yasnippet-bundle evil-matchit monokai-theme pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
+    (evil-space evil-smartparens emmet-mode yasnippet-bundle evil-matchit monokai-theme pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
  '(recentf-mode t)
  '(shift-select-mode nil)
  '(show-paren-mode t))
@@ -196,6 +199,14 @@
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
+;; ,. -> <esc>
+(key-chord-define evil-visual-state-map ",." 'keyboard-quit)
+(key-chord-define minibuffer-local-map ",." 'minibuffer-keyboard-quit)
+(key-chord-define minibuffer-local-ns-map ",." 'minibuffer-keyboard-quit)
+(key-chord-define minibuffer-local-completion-map ",." 'minibuffer-keyboard-quit)
+(key-chord-define minibuffer-local-must-match-map ",." 'minibuffer-keyboard-quit)
+(key-chord-define minibuffer-local-isearch-map ",." 'minibuffer-keyboard-quit)
+
 ;;neotree
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
@@ -212,6 +223,10 @@
 ;;extend % use to tags
 (require 'evil-matchit)
 (global-evil-matchit-mode 1)
+
+;; evil-space: Repeat search with <SPC> and <S-SPC>
+(require 'evil-space)
+(evil-space-mode)
 
 ;; avy = easymotion
 (require 'avy)
@@ -247,4 +262,8 @@
   "."  'evil-ex
   )
 
-
+;; ,. -> esc
+   ;; (key-chord-define evil-normal-state-map ",," 'evil-force-normal-state)
+   ;; (key-chord-define evil-visual-state-map ",." 'evil-change-to-previous-state)
+   ;; (key-chord-define evil-insert-state-map ",." 'evil-normal-state)
+   ;; (key-chord-define evil-replace-state-map ",." 'evil-normal-state)
