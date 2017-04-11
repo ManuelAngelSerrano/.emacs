@@ -5,6 +5,7 @@
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 (package-initialize)
 
+;;MacOsx keyboard config. Comment in Windows / Linux
 (setq default-input-method "MacOSX")
 ;;(setq mac-option-key-is-meta t)
 (setq mac-option-key-is-meta nil)
@@ -57,19 +58,20 @@
 
 (global-set-key (kbd "C-<SPC>") 'set-mark-command) ; Ctrl-SPC Set Mark
 
-;; (global-set-key (kbd "C-k") 'kill-whole-line) ; Ctrl-K Kill
+;; (global-set-key (kbd "C-k") 'kill-whole-line) ;jj Ctrl-K Kill
 
 ;; (global-set-key (kbd "C-<tab>") 'other-window) ; Ctrl-TAB Next Window Buffer
 
 (global-set-key (kbd "C-q") 'save-buffers-kill-emacs) ; Ctrl-Q Quit
 
-(define-key isearch-mode-map (kbd "<right>") 'isearch-repeat-forward) ; -> Search Forward
-(define-key isearch-mode-map (kbd "<left>") 'isearch-repeat-backward) ; <- Search Backward
+;; (define-key isearch-mode-map (kbd "<right>") 'isearch-repeat-forward) ; -> Search Forward
+;; (define-key isearch-mode-map (kbd "<left>") 'isearch-repeat-backward) ; <- Search Backward
 
 (global-set-key (kbd "M-x") 'smex)
 
 (global-set-key (kbd "C-z") 'undo) ; Ctrl-Z Undo
 (global-set-key (kbd "C-S-Z") 'redo) ; Ctrl-Shift-Z Redo
+(define-key evil-normal-state-map (kbd "U") 'redo) ;U is also redo in evil-mode
 
 ;; (global-set-key (kbd "C-'") 'comment-dwim) ; Ctrl-ç Comment
 
