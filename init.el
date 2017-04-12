@@ -71,7 +71,6 @@
 
 (global-set-key (kbd "C-z") 'undo) ; Ctrl-Z Undo
 (global-set-key (kbd "C-S-Z") 'redo) ; Ctrl-Shift-Z Redo
-(define-key evil-normal-state-map (kbd "U") 'redo) ;U is also redo in evil-mode
 
 ;; (global-set-key (kbd "C-'") 'comment-dwim) ; Ctrl-ç Comment
 
@@ -191,6 +190,8 @@
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 (key-chord-define evil-normal-state-map "ZZ" 'evil-save-and-close)
 (key-chord-mode 1)
+
+(define-key evil-normal-state-map (kbd "U") 'redo) ;U is also redo in evil-mode
 
 ;;; evil <esc> quits
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
