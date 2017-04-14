@@ -18,6 +18,8 @@
 ;; UTF-8 as default encoding
 (set-language-environment "UTF-8")
 
+;; Visual Bell - Avoid Beep
+(setq visible-bell t)
 
 ;; Tema
 ;;;;;;;;;;;;;;;
@@ -172,7 +174,7 @@
 
 
 (setq shift-select-mode t)
-;;Para el auto completado
+;; For auto-completion
 (add-hook 'after-init-hook 'global-company-mode)
 
 (require 'evil-leader)
