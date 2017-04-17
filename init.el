@@ -146,7 +146,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (linum-relative evil-space evil-smartparens emmet-mode yasnippet-bundle evil-matchit monokai-theme pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
+    (rainbow-delimiters projectile cider clojure-mode linum-relative evil-space evil-smartparens emmet-mode yasnippet-bundle evil-matchit monokai-theme pandoc-mode evil-nerd-commenter powerline-evil evil-avy evil-easymotion evil-leader powerline neotree yasnippet smex smartparens redo+ markdown-mode+ lorem-ipsum key-chord ido-vertical-mode haml-mode evil-surround dirtree company coffee-mode auctex)))
  '(recentf-mode t)
  '(shift-select-mode nil)
  '(show-paren-mode t))
@@ -158,6 +158,12 @@
      (define-key coffee-mode-map [(meta r)] 'coffee-compile-buffer)
      (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)))
 
+;; clojure
+(require 'clojure-mode)
+
+;;Rainbow-delimiters
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;
 
